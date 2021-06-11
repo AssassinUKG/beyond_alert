@@ -13,6 +13,7 @@ After getting your xss alert box, what's next? This is not usually enough to "sh
   ```
 
 - Record key stokes
+
   Add this to a js file
   ```js
   var data = '';
